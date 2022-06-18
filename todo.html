@@ -61,7 +61,7 @@
                 const itemID = itemsArr[i].id;
                 // console.log(itemID);
                 // console.log(itemValue);
-                addnewlist.innerHTML += `<p onclick="checked('${itemID}');" class='' id='checked'><span id='${itemID}'>${itemValue}</span><i onclick="editList('${itemID}');">Edit</i><i onclick="removeItem('${itemID}');">Delete</i></p>`;
+                addnewlist.innerHTML += `<p onclick="checked(${itemID});" id='${itemID}'><span id='${itemID}'>${itemValue}</span><i onclick="editList('${itemID}');">Edit</i><i onclick="removeItem('${itemID}');">Delete</i></p>`;
 
             }
 
@@ -70,7 +70,7 @@
         function addItem() {
             const value = document.getElementById("data").value;
             const id = Math.floor((Math.random() * 5000) + 402);
-            itemsArr.push({ id, value, checked: true });
+            itemsArr.push({ id, value, checked: false });
 
             if (value !== '') {
                 renderList();
@@ -103,17 +103,16 @@
 
         }
 
-        // function checked(id) {
-        //     var item = itemsArr.find((item) => item.id == id);
-        //     console.log("hfhhf",itemsArr)
-            
-        //     if (item == true) {
-              
-        //       //console.log("hh",checked)
-        //     }
-        //     console.log(id);
-        //     renderList();
-        // }
+        function checked(id) {
+            console.log(id);
+            let cur = document.getElementById(id);
+            if (cur.classList.contains('checked')) {
+                cur.classList.remove('checked');
+            } else {
+                cur.classList.add('checked');
+            }
+        };
+
 
     </script>
 </body>
